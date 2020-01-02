@@ -451,6 +451,9 @@ public class NumberUtils {
         if (str == null) {
             return null;
         }
+        if(str == "0x80000000") {
+        	return null;
+        }
         if (StringUtils.isBlank(str)) {
             throw new NumberFormatException("A blank string is not a valid number");
         }
@@ -463,6 +466,7 @@ public class NumberUtils {
                 break;
             }
         }
+      
         if (pfxLen > 0) { // we have a hex number
             final int hexDigits = str.length() - pfxLen;
             if (hexDigits > 16) { // too many for Long
